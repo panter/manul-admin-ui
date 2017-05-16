@@ -1,0 +1,49 @@
+{
+  "name": "@panter/manul-admin-ui",
+  "version": "0.1.0",
+  "author": "",
+  "description": "Provides a default UI for https://github.com/panter/manul-admin",
+  "main": "./dist/manul-admin-ui.js",
+  "scripts": {
+    "test": "babel-node --stage 1 test/harness.js test/**/*.js",
+    "compile": "npm run lint && babel src -s -d dist",
+    "lint": "eslint src/**.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remolueoend/manul-admin-ui.git"
+  },
+  "keywords": [
+    "panter",
+    "manul",
+    "admin",
+    "ui",
+    "interface"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/remolueoend/manul-admin-ui/issues"
+  },
+  "homepage": "https://github.com/remolueoend/manul-admin-ui#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-syntax-trailing-function-commas": "^6.20.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "6.x.x",
+    "babel-preset-react": "6.x.x",
+    "babel-preset-stage-2": "6.x.x",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-meteor": "^4.0.1",
+    "eslint-plugin-react": "^6.8.0"
+  },
+  "peerDependencies": {
+    "babel-runtime": "*.*.*",
+    "mantra-core": "^1.7.0",
+    "react": "^15.0.0"
+  }
+}
