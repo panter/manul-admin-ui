@@ -1,9 +1,11 @@
 import { module } from './admin-ui-module';
-import { getDefaultUI } from './get-default-ui';
+import getDefaultComponents from './get-default-components';
+// import * as defaultComponents from './components';
+// import * as defaultContainers from './containers';
 
-export default {
+export {
   module,
-  getDefaultUI,
-  containers: {},
-  components: {},
+  getDefaultComponents,
+  // containers: defaultContainers,
+  // components: defaultComponents,
 };
