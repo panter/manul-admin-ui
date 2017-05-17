@@ -3,15 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.getDefaultComponents = exports.module = undefined;
 
 var _adminUiModule = require('./admin-ui-module');
 
-var _getDefaultUi = require('./get-default-ui');
+var _getDefaultComponents = require('./get-default-components');
 
-exports.default = {
-  module: _adminUiModule.module,
-  getDefaultUI: _getDefaultUi.getDefaultUI,
-  containers: {},
-  components: {}
-};
+var _getDefaultComponents2 = _interopRequireDefault(_getDefaultComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import * as defaultComponents from './components';
+// import * as defaultContainers from './containers';
+
+exports.module = _adminUiModule.module;
+exports.getDefaultComponents = _getDefaultComponents2.default;
 //# sourceMappingURL=manul-admin-ui.js.map
