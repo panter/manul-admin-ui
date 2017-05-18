@@ -1,15 +1,17 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const AdminLayout = ({
   content,
-  adminContext: { components: { mainLayout } },
+  MainLayout,
 }) => (
-  mainLayout ?
-    <mainLayout content={content} /> :
-    <div>{content}</div>
-);
+    MainLayout ?
+      <MainLayout content={content} /> :
+      <div>{content}</div>
+  );
 
 AdminLayout.propTypes = {
+  MainLayout: PropTypes.element,
 };
 
 AdminLayout.defaultProps = {
