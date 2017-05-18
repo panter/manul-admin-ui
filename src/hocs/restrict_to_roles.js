@@ -9,4 +9,4 @@ export default (rolesOnly, error) => composeWithTracker((props, onData) => {
       onData(new Error('not allowed'));
     }
   }
-})(error);
+}, null, error);

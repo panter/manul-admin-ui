@@ -15,10 +15,14 @@ var _not_allowed_message2 = _interopRequireDefault(_not_allowed_message);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var NotAllowed = function NotAllowed(_ref) {
-  var mainLayout = _ref.adminContext.components.mainLayout;
-  return mainLayout ? _react2.default.createElement('mainLayout', { content: function content() {
+  var MainLayout = _ref.MainLayout;
+  return MainLayout ? _react2.default.createElement(MainLayout, { content: function content() {
       return _react2.default.createElement(_not_allowed_message2.default, null);
     } }) : _react2.default.createElement(_not_allowed_message2.default, null);
+};
+
+NotAllowed.propTypes = {
+  MainLayout: _react2.default.PropTypes.element
 };
 
 exports.default = NotAllowed;

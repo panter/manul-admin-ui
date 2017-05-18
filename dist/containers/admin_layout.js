@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.depsMapper = exports.composer = undefined;
+exports.depsMapper = exports.mainLayoutMapper = exports.composer = undefined;
 
 var _mantraCore = require('mantra-core');
 
@@ -27,15 +27,32 @@ var composer = exports.composer = function composer(_ref, onData) {
   onData(null, {});
 };
 
+/**
+ * Returns the main layout defined in the admin context.
+ * Returns false if not defined.
+ * @param {} context
+ */
+var mainLayoutMapper = exports.mainLayoutMapper = function mainLayoutMapper(context) {
+  return !!context && !!context.adminContext && !!context.adminContext.components && context.adminContext.components.mainLayout;
+};
+
+/**
+ * NotAllowed wrapper providing a main layout reference.
+ */
+var NotAllowedWrapper = (0, _mantraCore.useDeps)(function (context) {
+  return {
+    MainLayout: mainLayoutMapper(context)
+  };
+})(_not_allowed2.default);
+
 var depsMapper = exports.depsMapper = function depsMapper(_context) {
   return {
     context: function context() {
       return _context;
-    }
+    },
+    MainLayout: mainLayoutMapper(_context)
   };
 };
 
-exports.default = (0, _mantraCore.composeAll)((0, _mantraCore.composeWithTracker)(composer),
-// restrictToRoles('admin', () => NotAllowed),
-(0, _mantraCore.useDeps)(depsMapper))(_admin_layout2.default);
+exports.default = (0, _mantraCore.composeAll)((0, _mantraCore.composeWithTracker)(composer), (0, _restrict_to_roles2.default)('admin', NotAllowedWrapper), (0, _mantraCore.useDeps)(depsMapper))(_admin_layout2.default);
 //# sourceMappingURL=admin_layout.js.map

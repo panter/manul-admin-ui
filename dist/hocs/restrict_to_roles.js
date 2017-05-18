@@ -19,6 +19,6 @@ exports.default = function (rolesOnly, error) {
         onData(new Error('not allowed'));
       }
     }
-  })(error);
+  }, null, error);
 };
 //# sourceMappingURL=restrict_to_roles.js.map

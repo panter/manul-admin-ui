@@ -12,10 +12,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var AdminLayout = function AdminLayout(_ref) {
   var content = _ref.content,
-      mainLayout = _ref.adminContext.components.mainLayout;
-  return mainLayout ? _react2.default.createElement('mainLayout', { content: content }) : _react2.default.createElement(
+      MainLayout = _ref.MainLayout;
+
+  return MainLayout ? _react2.default.createElement(MainLayout, { content: content }) : _react2.default.createElement(
     'div',
-    null,
+    { 'data-hoi': 'w\xE4lt' },
     content
   );
 };
