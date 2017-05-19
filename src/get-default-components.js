@@ -3,6 +3,7 @@ import AdminPreview from './containers/document_preview';
 import AdminList from './containers/list';
 import AdminCreate from './containers/create';
 import AdminEdit from './containers/edit';
+import AdminHome from './containers/admin_home';
 import UsersEdit from './containers/users_edit';
 
 /**
@@ -19,6 +20,7 @@ export default function getDefaultComponents(overwrites) {
     list: AdminList,
     create: AdminCreate,
     preview: AdminPreview,
+    index: AdminHome,
     edit: {
       users: UsersEdit,
       default: AdminEdit,
