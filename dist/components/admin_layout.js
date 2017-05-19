@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -13,15 +17,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var AdminLayout = function AdminLayout(_ref) {
   var content = _ref.content,
       MainLayout = _ref.MainLayout;
-
   return MainLayout ? _react2.default.createElement(MainLayout, { content: content }) : _react2.default.createElement(
     'div',
-    { 'data-hoi': 'w\xE4lt' },
+    null,
     content
   );
 };
 
-AdminLayout.propTypes = {};
+AdminLayout.propTypes = {
+  MainLayout: _propTypes2.default.element
+};
 
 AdminLayout.defaultProps = {};
 

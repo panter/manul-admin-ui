@@ -30,6 +30,10 @@ var _edit = require('./containers/edit');
 
 var _edit2 = _interopRequireDefault(_edit);
 
+var _admin_home = require('./containers/admin_home');
+
+var _admin_home2 = _interopRequireDefault(_admin_home);
+
 var _users_edit = require('./containers/users_edit');
 
 var _users_edit2 = _interopRequireDefault(_users_edit);
@@ -50,6 +54,7 @@ function getDefaultComponents(overwrites) {
     list: _list2.default,
     create: _create2.default,
     preview: _document_preview2.default,
+    index: _admin_home2.default,
     edit: {
       users: _users_edit2.default,
       default: _edit2.default

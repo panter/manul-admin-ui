@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _not_allowed_message = require('./not_allowed_message');
 
 var _not_allowed_message2 = _interopRequireDefault(_not_allowed_message);
@@ -22,7 +26,7 @@ var NotAllowed = function NotAllowed(_ref) {
 };
 
 NotAllowed.propTypes = {
-  MainLayout: _react2.default.PropTypes.element
+  MainLayout: _propTypes2.default.element
 };
 
 exports.default = NotAllowed;

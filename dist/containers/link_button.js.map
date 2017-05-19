@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/containers/link_button.js"],"names":[],"mappings":";;;;;;AAAA;;;;AACA;;;;;;kBAEe,qC","file":"link_button.js","sourcesContent":["import Button from '../components/button';\nimport link from '../hocs/link';\n\nexport default link(Button);\n"]}
