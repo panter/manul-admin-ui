@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/remolueoend/manul-admin-ui#readme",
   "devDependencies": {
+    "@panter/manul-router": "^0.3.2",
     "babel-cli": "^6.24.0",
     "babel-eslint": "^6.1.2",
     "babel-plugin-lodash": "^3.2.11",
@@ -42,14 +43,20 @@
     "eslint-plugin-meteor": "^4.0.1",
     "eslint-plugin-react": "^6.8.0",
     "mantra-core": "^1.7.0",
-    "react": "^15.5.4"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "peerDependencies": {
     "babel-runtime": "*.*.*",
     "mantra-core": "^1.7.0",
-    "react": "^15.0.0"
+    "react": "^15.0.0",
+    "react-dom": "^15.5.4",
+    "@panter/manul-router": "^0.3.2"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react-addons-css-transition-group": "^15.5.2",
+    "react-addons-transition-group": "^15.5.2",
+    "reactstrap": "^4.6.2"
   }
 }
