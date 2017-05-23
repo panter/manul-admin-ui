@@ -1,46 +1,35 @@
 import React from 'react';
-import flat from 'flat';
+import { RowDefinition } from 'griddle-react';
+import Griddle from './griddle';
+import getGriddleColumns from '../lib/get_griddle_columns';
 
-const List = ({
-  resultsPerPage,
-  collectionName,
-  collection,
-  publications,
-  gotoEdit,
-  columns,
-  columnMetadata,
-  listTransformEntry,
-  filteredFields,
-  baseQuery,
-  sortBy,
-  MeteorGriddle,
-}) => (
-  <div>
-    <MeteorGriddle
-      transformResult={listTransformEntry || flat}
-      columns={columns}
-      columnMetadata={columnMetadata}
-      publication={publications.list}
-      collection={collection}
-      externalResultsPerPage={resultsPerPage}
-      matchingResultsCount={publications.counts}
-      filteredFields={filteredFields}
-      initialSort={sortBy || columns[0]}
-      onRowClick={event => gotoEdit(collectionName, event.props.data._id)}
-      showFilter
-      baseQuery={baseQuery}
-    />
-  </div>);
+const List = (props) => {
+  const {
+    docs,
+    docsLoaded,
+    sortProperties,
+    pageProperties,
+    recordCount,
+  } = props;
 
-List.propTypes = {
+  return (
+    <Griddle
+      data={docs}
+      docsLoaded={docsLoaded}
+      sortProperties={sortProperties}
+      pageProperties={{
+        ...pageProperties,
+        recordCount,
+      }}
 
+      events={{
+      }}
+    >
+      <RowDefinition>
+        { getGriddleColumns(props) }
+      </RowDefinition>
+    </Griddle>
+  );
 };
-
-List.defaultProps = {
-  showActions: true,
-  resultsPerPage: 100,
-};
-
-List.displayName = 'Admin.List';
 
 export default List;

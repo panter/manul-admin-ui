@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import module from './admin-ui-module';
 import getDefaultComponents from './get-default-components';
 import * as defaultComponents from './components';

@@ -28,6 +28,7 @@ const NotAllowedWrapper = useDeps(context => ({
 export const depsMapper = context => ({
   context: () => context,
   MainLayout: mainLayoutMapper(context),
+  adminConfig: context.adminContext.config,
 });
 
 export default composeAll(
