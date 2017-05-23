@@ -50,7 +50,8 @@ var depsMapper = exports.depsMapper = function depsMapper(_context) {
     context: function context() {
       return _context;
     },
-    MainLayout: mainLayoutMapper(_context)
+    MainLayout: mainLayoutMapper(_context),
+    adminConfig: _context.adminContext.config
   };
 };
 

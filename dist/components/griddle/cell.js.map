@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/griddle/cell.jsx"],"names":[],"mappings":";;;;;;;;;;;;AAAA;;;;AACA;;;;;;kBAEe,+C","file":"cell.js","sourcesContent":["import styled from 'styled-components';\nimport Cell from 'griddle-react/dist/module/components/Cell';\n\nexport default styled(Cell)`\n  background-color: red;\n`;\n"]}

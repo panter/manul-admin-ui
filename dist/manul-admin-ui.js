@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.defaultComponents = exports.defaultContainers = exports.getDefaultComponents = exports.module = undefined;
 
+require('bootstrap/dist/css/bootstrap.css');
+
 var _adminUiModule = require('./admin-ui-module');
 
 var _adminUiModule2 = _interopRequireDefault(_adminUiModule);

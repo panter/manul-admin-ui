@@ -15,8 +15,6 @@ var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2
 
 var _mantraCore = require('mantra-core');
 
-var _reactKomposer = require('react-komposer');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var composer = function composer(_ref, onData) {
@@ -30,7 +28,7 @@ var composer = function composer(_ref, onData) {
 };
 
 exports.composer = composer;
-var depsMapper = exports.depsMapper = function depsMapper(_context2, actions) {
+var depsMapper = exports.depsMapper = function depsMapper(_context2) {
   return {
     context: function context() {
       return _context2;
@@ -39,9 +37,6 @@ var depsMapper = exports.depsMapper = function depsMapper(_context2, actions) {
 };
 
 exports.default = function (C) {
-  (0, _reactKomposer.setComposerStub)(C, function (props) {
-    return props;
-  });
   return (0, _mantraCore.composeAll)((0, _mantraCore.composeWithTracker)(composer), (0, _mantraCore.useDeps)(depsMapper))(C);
 };
 //# sourceMappingURL=link.js.map
