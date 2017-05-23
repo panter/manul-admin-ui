@@ -1,5 +1,4 @@
-import { useDeps, composeAll, composeWithTracker, compose } from 'mantra-core';
-import { setComposerStub } from 'react-komposer';
+import { useDeps, composeAll, composeWithTracker } from 'mantra-core';
 
 export const composer = ({ context, ...nav }, onData) => {
   const { manulRouter } = context();
@@ -8,14 +7,11 @@ export const composer = ({ context, ...nav }, onData) => {
   });
 };
 
-export const depsMapper = (context, actions) => ({
+export const depsMapper = context => ({
   context: () => context,
 });
 
-export default (C) => {
-  setComposerStub(C, props => props);
-  return composeAll(
+export default C => composeAll(
   composeWithTracker(composer),
-  useDeps(depsMapper)
+  useDeps(depsMapper),
 )(C);
-};

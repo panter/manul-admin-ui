@@ -1,20 +1,18 @@
 import React from 'react';
-import ButtonGroup from './button_group';
-import LinkButton from '../containers/link_button';
+import {
+  Row,
+  Col,
+  SideNavComp,
+  NavItem,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Collapse
+} from 'reactstrap';
+import NavLink from '../containers/nav_link';
 
-const getCollectionLinks = adminConfig =>
-  Object.keys(adminConfig.collections).map(collectionName => (
-    <LinkButton routeName={`admin.${collectionName}.list`}>
-      {adminConfig.collections[collectionName].title}
-    </LinkButton>
-  ));
-
-const AdminHome = ({
-  adminConfig,
-}) => (
-  <ButtonGroup>
-    {getCollectionLinks(adminConfig)}
-  </ButtonGroup>
+const AdminHome = ({ adminConfig }) => (
+  <div>Home</div>
 );
 
 AdminHome.propTypes = {
