@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -20,13 +24,25 @@ var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstru
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
+var _get2 = require('babel-runtime/helpers/get');
+
+var _get3 = _interopRequireDefault(_get2);
+
 var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _QuickForm = require('uniforms/QuickForm');
+var _QuickForm = require('uniforms-bootstrap4/QuickForm');
 
 var _QuickForm2 = _interopRequireDefault(_QuickForm);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _manulI18n = require('@panter/manul-i18n');
+
+var _reactstrap = require('reactstrap');
 
 var _BaseForm = require('./BaseForm');
 
@@ -36,15 +52,13 @@ var _AutoField = require('../fields/AutoField');
 
 var _AutoField2 = _interopRequireDefault(_AutoField);
 
-var _FormActions = require('./FormActions');
+var _FormActions = require('../fields/FormActions');
 
 var _FormActions2 = _interopRequireDefault(_FormActions);
 
-var _react = require('react');
+var _fieldColumn = require('../fields/fieldColumn');
 
-var _react2 = _interopRequireDefault(_react);
-
-var _manulI18n = require('@panter/manul-i18n');
+var _fieldColumn2 = _interopRequireDefault(_fieldColumn);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78,15 +92,48 @@ var Quick = function Quick(parent) {
       value: function getSubmitField() {
         var _this2 = this;
 
-        return function (props) {
-          return !props.hideSubmitField && _react2.default.createElement(
+        if (this.props.hideSubmitButton || this.props.hideSubmitField) {
+          return function () {
+            return null;
+          };
+        }
+        return (0, _fieldColumn2.default)(function (props) {
+          return _react2.default.createElement(
             _FormActions2.default,
-            {
-              submitLabel: _this2.props.submitLabel
-            },
+            (0, _extends3.default)({}, props, { submitLabel: _this2.props.submitLabel }),
             _this2.props.additionalActions
           );
-        };
+        });
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var nativeFormProps = this.getNativeFormProps();
+        if (nativeFormProps.children) {
+          return _react2.default.createElement(
+            _reactstrap.Row,
+            null,
+            (0, _get3.default)(_class.prototype.__proto__ || (0, _getPrototypeOf2.default)(_class.prototype), 'render', this).call(this)
+          );
+        }
+
+        var AautoField = this.props.autoField || this.getAutoField();
+        var ErrorsField = this.props.errorsField || this.getErrorsField();
+        var SubmitField = this.props.submitField || this.getSubmitField();
+
+        return _react2.default.createElement(
+          'form',
+          nativeFormProps,
+          _react2.default.createElement(
+            _reactstrap.Row,
+            null,
+            this.getChildContextSchema().getSubfields().map(function (key) {
+              return _react2.default.createElement(AautoField, { key: key, name: key });
+            }),
+            _react2.default.createElement(ErrorsField, null),
+            _react2.default.createElement(SubmitField, null)
+          )
+        );
       }
     }]);
     return _class;

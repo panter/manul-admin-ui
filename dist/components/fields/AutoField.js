@@ -3,84 +3,93 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.componentOverwrites = undefined;
 
-var _connectField = require('uniforms/connectField');
+var _extends2 = require('babel-runtime/helpers/extends');
 
-var _connectField2 = _interopRequireDefault(_connectField);
+var _extends3 = _interopRequireDefault(_extends2);
 
-var _invariant = require('fbjs/lib/invariant');
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
-var _invariant2 = _interopRequireDefault(_invariant);
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _map = require('babel-runtime/core-js/map');
+
+var _map2 = _interopRequireDefault(_map);
 
 var _react = require('react');
 
-var _NumField = require('./NumField');
+var _AutoField = require('uniforms-bootstrap4/AutoField');
 
-var _NumField2 = _interopRequireDefault(_NumField);
+var _AutoField2 = _interopRequireDefault(_AutoField);
 
-var _BoolField = require('./BoolField');
+var _fieldColumn = require('./fieldColumn');
 
-var _BoolField2 = _interopRequireDefault(_BoolField);
-
-var _DateField = require('./DateField');
-
-var _DateField2 = _interopRequireDefault(_DateField);
-
-var _ListField = require('./ListField');
-
-var _ListField2 = _interopRequireDefault(_ListField);
+var _fieldColumn2 = _interopRequireDefault(_fieldColumn);
 
 var _NestField = require('./NestField');
 
 var _NestField2 = _interopRequireDefault(_NestField);
 
+var _ListField = require('./ListField');
+
+var _ListField2 = _interopRequireDefault(_ListField);
+
 var _TextField = require('./TextField');
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
-var _RadioField = require('./RadioField');
-
-var _RadioField2 = _interopRequireDefault(_RadioField);
-
-var _SelectField = require('./SelectField');
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Auto = function Auto(props) {
-  var component = props.component;
-  if (component === undefined) {
-    if (props.allowedValues) {
-      if (props.checkboxes && props.fieldType !== Array) {
-        component = _RadioField2.default;
-      } else {
-        component = _SelectField2.default;
-      }
-    } else {
-      switch (props.fieldType) {
-        case Date:
-          component = _DateField2.default;break;
-        case Array:
-          component = _ListField2.default;break;
-        case Number:
-          component = _NumField2.default;break;
-        case Object:
-          component = _NestField2.default;break;
-        case String:
-          component = _TextField2.default;break;
-        case Boolean:
-          component = _BoolField2.default;break;
-        default:
-          throw new Error('Unsupported component type: ' + component);
-      }
+// Component overwrites
+var componentOverwrites = exports.componentOverwrites = new _map2.default([[Object, _NestField2.default], [Array, _ListField2.default], [String, _TextField2.default]]);
 
-      (0, _invariant2.default)(component, 'Unsupported field type: %s', props.fieldType.toString());
-    }
+var AutoField = function (_BaseAutoField) {
+  (0, _inherits3.default)(AutoField, _BaseAutoField);
+
+  function AutoField() {
+    (0, _classCallCheck3.default)(this, AutoField);
+    return (0, _possibleConstructorReturn3.default)(this, (AutoField.__proto__ || (0, _getPrototypeOf2.default)(AutoField)).apply(this, arguments));
   }
 
-  return (0, _react.createElement)(component, props);
-};
+  (0, _createClass3.default)(AutoField, [{
+    key: 'render',
+    value: function render() {
+      // this.getFieldProps also returns props from context, such as uniforms props:
+      var props = this.getFieldProps(undefined, { ensureValue: false });
+      var action = this.context.uniforms.action;
+      var isDisabled = props.field.uniforms && props.field.uniforms.disabled;
+      if (action === 'create' && isDisabled) return null;
+      var component = props.component;
+      var componentOverwrite = componentOverwrites.get(props.fieldType);
+      if (!component && componentOverwrite) {
+        component = (0, _fieldColumn2.default)(componentOverwrite);
+      }
+      if (!component) {
+        component = (0, _fieldColumn2.default)(_AutoField2.default);
+      }
+      return (0, _react.createElement)(component, (0, _extends3.default)({}, props));
+    }
+  }]);
+  return AutoField;
+}(_AutoField2.default);
 
-exports.default = (0, _connectField2.default)(Auto, { ensureValue: false, includeInChain: false, initialValue: false });
+AutoField.displayName = 'AutoField';
+exports.default = AutoField;
 //# sourceMappingURL=AutoField.js.map

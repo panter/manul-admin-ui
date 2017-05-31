@@ -1,42 +1,34 @@
-import connectField from 'uniforms/connectField';
-import invariant from 'fbjs/lib/invariant';
 import { createElement } from 'react';
-
-import NumField from './NumField';
-import BoolField from './BoolField';
-import DateField from './DateField';
-import ListField from './ListField';
+import BaseAutoField from 'uniforms-bootstrap4/AutoField';
+import fieldColumn from './fieldColumn';
 import NestField from './NestField';
+import ListField from './ListField';
 import TextField from './TextField';
-import RadioField from './RadioField';
-import SelectField from './SelectField';
 
+// Component overwrites
+export const componentOverwrites = new Map([
+  [Object, NestField],
+  [Array, ListField],
+  [String, TextField],
+]);
 
-const Auto = (props) => {
-  let component = props.component;
-  if (component === undefined) {
-    if (props.allowedValues) {
-      if (props.checkboxes && props.fieldType !== Array) {
-        component = RadioField;
-      } else {
-        component = SelectField;
-      }
-    } else {
-      switch (props.fieldType) {
-        case Date: component = DateField; break;
-        case Array: component = ListField; break;
-        case Number: component = NumField; break;
-        case Object: component = NestField; break;
-        case String: component = TextField; break;
-        case Boolean: component = BoolField; break;
-        default: throw new Error(`Unsupported component type: ${component}`);
-      }
+export default class AutoField extends BaseAutoField {
+  static displayName = 'AutoField';
 
-      invariant(component, 'Unsupported field type: %s', props.fieldType.toString());
+  render() {
+    // this.getFieldProps also returns props from context, such as uniforms props:
+    const props = this.getFieldProps(undefined, { ensureValue: false });
+    const action = this.context.uniforms.action;
+    const isDisabled = props.field.uniforms && props.field.uniforms.disabled;
+    if (action === 'create' && isDisabled) return null;
+    let component = props.component;
+    const componentOverwrite = componentOverwrites.get(props.fieldType);
+    if (!component && componentOverwrite) {
+      component = fieldColumn(componentOverwrite);
     }
+    if (!component) {
+      component = fieldColumn(BaseAutoField);
+    }
+    return createElement(component, { ...props });
   }
-
-  return createElement(component, props);
-};
-
-export default connectField(Auto, { ensureValue: false, includeInChain: false, initialValue: false });
+}

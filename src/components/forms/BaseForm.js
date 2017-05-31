@@ -1,9 +1,19 @@
-import BaseForm from 'uniforms/BaseForm';
+import BaseForm from 'uniforms-bootstrap4/BaseForm';
+import React from 'react';
+import { Row } from 'reactstrap';
 
-const Unstyled = parent => class extends parent {
-  static Unstyled = Unstyled;
+export default class ManulAdminBaseForm extends BaseForm {
+  static ManulAdminBaseForm = ManulAdminBaseForm;
+  static displayName = `ManulAdminBaseForm${BaseForm.displayName}`;
 
-  static displayName = `Unstyled${parent.displayName}`;
-};
-
-export default Unstyled(BaseForm);
+  render() {
+    const { props, children } = this.getNativeFormProps();
+    return (
+      <form {...props} className={'Remo'}>
+        <Row>
+          {children}
+        </Row>
+      </form>
+    );
+  }
+}

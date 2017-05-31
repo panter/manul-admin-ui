@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const NotAllowedMessage = () => (
   <div >
@@ -7,7 +8,7 @@ const NotAllowedMessage = () => (
   );
 
 NotAllowedMessage.propTypes = {
-  message: React.PropTypes.string,
+  message: PropTypes.string,
 };
 
 NotAllowedMessage.defaultProps = {

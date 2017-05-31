@@ -8,13 +8,11 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactstrap = require('reactstrap');
+
 var _AutoForm = require('./forms/AutoForm');
 
 var _AutoForm2 = _interopRequireDefault(_AutoForm);
-
-var _button = require('./button');
-
-var _button2 = _interopRequireDefault(_button);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,6 +22,14 @@ var Create = function Create(_ref) {
       create = _ref.create,
       title = _ref.title,
       gotoList = _ref.gotoList;
+
+  var backToCollectionButton = _react2.default.createElement(
+    _reactstrap.Button,
+    { onClick: function onClick() {
+        return gotoList(collectionName);
+      } },
+    'Back to list'
+  );
   return _react2.default.createElement(
     'div',
     null,
@@ -33,16 +39,14 @@ var Create = function Create(_ref) {
       'Create ',
       title
     ),
-    _react2.default.createElement(_AutoForm2.default, { schema: schema, onSubmit: function onSubmit(doc) {
+    _react2.default.createElement(_AutoForm2.default, {
+      action: 'create',
+      schema: schema,
+      onSubmit: function onSubmit(doc) {
         return create(collectionName, doc);
-      } }),
-    _react2.default.createElement(
-      _button2.default,
-      { onClick: function onClick() {
-          return gotoList(collectionName);
-        } },
-      'Back to list'
-    )
+      },
+      additionalActions: backToCollectionButton
+    })
   );
 };
 

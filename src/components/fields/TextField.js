@@ -1,53 +1,51 @@
 import React from 'react';
+import BaseTextField from 'uniforms-bootstrap4/TextField';
 import connectField from 'uniforms/connectField';
 import filterDOMProps from 'uniforms/filterDOMProps';
 import styled from 'styled-components';
 
-const TextInput = styled.input`
-    border: none;
-    width: 100%;
-    font-size: 13px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 3px;
-    padding: 7px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+const StyledTextArea = styled.textarea`
+  width: 100%;
 `;
-const Text = ({
-    disabled,
-    id,
-    inputRef,
-    label,
-    name,
-    onChange,
-    placeholder,
-    type,
-    value,
-    ...props
-}) =>
-  <div {...filterDOMProps(props)}>
-    {label && (
-    <label htmlFor={id}>
-      {label}
-    </label>
-        )}
 
-    <TextInput
-      disabled={disabled}
-      id={id}
-      name={name}
-      onChange={event => onChange(event.target.value)}
-      placeholder={placeholder}
-      ref={inputRef}
-      type={type}
-      value={value}
-    />
-  </div>
-;
+const TextArea = ({
+  disabled,
+  id,
+  inputRef,
+  label,
+  name,
+  onChange,
+  placeholder,
+  value,
+  rowCount,
+  ...compProps
+}) => (
+  <div {...filterDOMProps(compProps)}>
+      {label && (
+        <label htmlFor={id}>
+          {label}
+        </label>
+      )}
+      <StyledTextArea
+        className={'form-control'}
+        disabled={disabled}
+        id={id}
+        name={name}
+        onChange={event => onChange(event.target.value)}
+        placeholder={placeholder}
+        ref={inputRef}
+        rows={rowCount}
+        value={value}
+       />
+    </div>
+  );
 
-Text.defaultProps = {
-  type: 'text',
+const Text = (props) => {
+  const Component = !props.rowCount ?
+    BaseTextField :
+    connectField(TextArea);
+
+  return (<Component {...props} />);
 };
 
-export default connectField(Text);
+export default Text;

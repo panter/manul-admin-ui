@@ -18,6 +18,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _database = require('react-icons/lib/fa/database');
+
+var _database2 = _interopRequireDefault(_database);
+
 var _reactstrap = require('reactstrap');
 
 var _nav_link = require('../containers/nav_link');
@@ -27,14 +31,19 @@ var _nav_link2 = _interopRequireDefault(_nav_link);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var getCollectionLinks = function getCollectionLinks(navItems) {
-  return navItems.map(function (navItem) {
+  return navItems.map(function (navItem, index) {
     return _react2.default.createElement(
       _reactstrap.NavItem,
-      null,
+      { key: index },
       _react2.default.createElement(
         _nav_link2.default,
         { routeName: navItem.routeName },
-        navItem.title
+        _react2.default.createElement(_database2.default, null),
+        _react2.default.createElement(
+          'span',
+          null,
+          navItem.title
+        )
       )
     );
   });

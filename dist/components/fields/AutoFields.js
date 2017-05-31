@@ -23,6 +23,8 @@ var AutoFields = function AutoFields(_ref, _ref2) {
       fields = _ref.fields,
       omitFields = _ref.omitFields,
       props = (0, _objectWithoutProperties3.default)(_ref, ['autoField', 'element', 'fields', 'omitFields']);
+
+  debugger;
   return (0, _react.createElement)(element, props, (fields || schema.getSubfields()).filter(function (field) {
     return omitFields.indexOf(field) === -1;
   }).map(function (field) {

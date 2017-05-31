@@ -1,4 +1,4 @@
-import ValidatedForm from 'uniforms/ValidatedForm';
+import ValidatedForm from 'uniforms-bootstrap4/ValidatedForm';
 
 import BaseForm from './BaseForm';
 

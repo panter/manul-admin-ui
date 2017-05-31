@@ -1,11 +1,11 @@
-import QuickForm from 'uniforms/QuickForm';
-
-import BaseForm from './BaseForm';
-import AutoField from '../fields/AutoField';
-import FormActions from './FormActions';
+import QuickForm from 'uniforms-bootstrap4/QuickForm';
 import React from 'react';
 import { T } from '@panter/manul-i18n';
-
+import { Row } from 'reactstrap';
+import BaseForm from './BaseForm';
+import AutoField from '../fields/AutoField';
+import FormActions from '../fields/FormActions';
+import fieldColumn from '../fields/fieldColumn';
 
 const Quick = parent => class extends QuickForm.Quick(parent) {
   static Quick = Quick;
@@ -19,12 +19,42 @@ const Quick = parent => class extends QuickForm.Quick(parent) {
   }
 
   getSubmitField() {
-    return props => (
-      !props.hideSubmitField && <FormActions
-        submitLabel={this.props.submitLabel}
-      >{this.props.additionalActions}
+    if (this.props.hideSubmitButton || this.props.hideSubmitField) {
+      return () => null;
+    }
+    return fieldColumn(props => (
+      <FormActions {...props} submitLabel={this.props.submitLabel}>
+        {this.props.additionalActions}
       </FormActions>
-  );
+    ));
+  }
+
+  render() {
+    const nativeFormProps = this.getNativeFormProps();
+    if (nativeFormProps.children) {
+      return (
+        <Row>
+          {super.render()}
+        </Row>
+      );
+    }
+
+    const AautoField = this.props.autoField || this.getAutoField();
+    const ErrorsField = this.props.errorsField || this.getErrorsField();
+    const SubmitField = this.props.submitField || this.getSubmitField();
+
+    return (
+      <form {...nativeFormProps}>
+        <Row>
+          {this.getChildContextSchema().getSubfields().map(key =>
+            <AautoField key={key} name={key} />,
+          )}
+
+          <ErrorsField />
+          <SubmitField />
+        </Row>
+      </form>
+    );
   }
 };
 

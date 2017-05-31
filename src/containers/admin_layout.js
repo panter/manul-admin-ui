@@ -1,4 +1,5 @@
 import { useDeps, composeAll, composeWithTracker } from 'mantra-core';
+import _ from 'lodash/fp';
 import AdminLayout from '../components/admin_layout';
 import restrictToRoles from '../hocs/restrict_to_roles';
 import NotAllowed from '../components/not_allowed';

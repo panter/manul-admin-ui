@@ -8,7 +8,7 @@ var _taggedTemplateLiteral2 = require('babel-runtime/helpers/taggedTemplateLiter
 
 var _taggedTemplateLiteral3 = _interopRequireDefault(_taggedTemplateLiteral2);
 
-var _templateObject = (0, _taggedTemplateLiteral3.default)(['\n  border-bottom: 1px solid #eee;\n'], ['\n  border-bottom: 1px solid #eee;\n']);
+var _templateObject = (0, _taggedTemplateLiteral3.default)(['\n  border-bottom: 1px solid #eee;\n  &:hover {\n    background-color: #f7f7f9;\n  }\n'], ['\n  border-bottom: 1px solid #eee;\n  &:hover {\n    background-color: #f7f7f9;\n  }\n']);
 
 var _styledComponents = require('styled-components');
 

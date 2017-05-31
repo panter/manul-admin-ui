@@ -18,9 +18,7 @@ var depsMapper = exports.depsMapper = function depsMapper(_context, actions) {
     context: function context() {
       return _context;
     },
-    downloadCsv: actions.manulAdmin.downloadCsv,
-
-    MeteorGriddle: _context.MeteorGriddle
+    downloadCsv: actions.manulAdmin.downloadCsv
   };
 };
 

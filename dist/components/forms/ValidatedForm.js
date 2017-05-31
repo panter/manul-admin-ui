@@ -20,7 +20,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _ValidatedForm = require('uniforms/ValidatedForm');
+var _ValidatedForm = require('uniforms-bootstrap4/ValidatedForm');
 
 var _ValidatedForm2 = _interopRequireDefault(_ValidatedForm);
 

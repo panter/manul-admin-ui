@@ -22,6 +22,20 @@ var _get_griddle_columns = require('../lib/get_griddle_columns');
 
 var _get_griddle_columns2 = _interopRequireDefault(_get_griddle_columns);
 
+var _link_button = require('../containers/link_button');
+
+var _link_button2 = _interopRequireDefault(_link_button);
+
+var _manulI18n = require('@panter/manul-i18n');
+
+var _collection_actions = require('./collection_actions');
+
+var _collection_actions2 = _interopRequireDefault(_collection_actions);
+
+var _griddleFilter = require('../containers/griddle-filter');
+
+var _griddleFilter2 = _interopRequireDefault(_griddleFilter);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var List = function List(props) {
@@ -29,25 +43,40 @@ var List = function List(props) {
       docsLoaded = props.docsLoaded,
       sortProperties = props.sortProperties,
       pageProperties = props.pageProperties,
-      recordCount = props.recordCount;
+      recordCount = props.recordCount,
+      collectionName = props.collectionName,
+      context = props.context;
 
+  var _context = context(),
+      LocalState = _context.LocalState;
+
+  var setFilter = function setFilter(val) {
+    return LocalState.set('admin.collections.filter', val);
+  };
 
   return _react2.default.createElement(
-    _griddle2.default,
-    {
-      data: docs,
-      docsLoaded: docsLoaded,
-      sortProperties: sortProperties,
-      pageProperties: (0, _extends3.default)({}, pageProperties, {
-        recordCount: recordCount
-      }),
-
-      events: {}
-    },
+    'div',
+    null,
+    _react2.default.createElement(_collection_actions2.default, { collectionName: collectionName, onFilterChange: setFilter }),
     _react2.default.createElement(
-      _griddleReact.RowDefinition,
-      null,
-      (0, _get_griddle_columns2.default)(props)
+      _griddle2.default,
+      {
+        data: docs,
+        docsLoaded: docsLoaded,
+        sortProperties: sortProperties,
+        pageProperties: (0, _extends3.default)({}, pageProperties, {
+          recordCount: recordCount
+        }),
+        components: {
+          Filter: _griddleFilter2.default
+        },
+        events: {}
+      },
+      _react2.default.createElement(
+        _griddleReact.RowDefinition,
+        null,
+        (0, _get_griddle_columns2.default)(props)
+      )
     )
   );
 };

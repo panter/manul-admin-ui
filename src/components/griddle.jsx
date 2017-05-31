@@ -2,7 +2,7 @@ import React from 'react';
 import GriddleReact, { plugins } from 'griddle-react';
 import * as tableComponents from './table';
 
-const Griddle = ({ style, docsLoaded, className, components, ...props }) => (
+const Griddle = ({ style, docsLoaded, className, components, children, ...props }) => (
   <div
     style={{
       overflow: 'auto',
@@ -17,7 +17,9 @@ const Griddle = ({ style, docsLoaded, className, components, ...props }) => (
       }}
       {...props}
       plugins={[plugins.LocalPlugin]}
-    />
+    >
+      {children}
+    </GriddleReact>
   </div>
 );
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
+import DbIcon from 'react-icons/lib/fa/database';
 import {
   Nav,
   NavItem,
@@ -7,10 +8,10 @@ import {
 import NavLink from '../containers/nav_link';
 
 const getCollectionLinks = navItems =>
-  navItems.map(navItem => (
-    <NavItem>
+  navItems.map((navItem, index) => (
+    <NavItem key={index}>
       <NavLink routeName={navItem.routeName}>
-        {navItem.title}
+        <DbIcon /><span>{navItem.title}</span>
       </NavLink>
     </NavItem>
   ));

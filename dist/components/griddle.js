@@ -33,7 +33,8 @@ var Griddle = function Griddle(_ref) {
       docsLoaded = _ref.docsLoaded,
       className = _ref.className,
       components = _ref.components,
-      props = (0, _objectWithoutProperties3.default)(_ref, ['style', 'docsLoaded', 'className', 'components']);
+      children = _ref.children,
+      props = (0, _objectWithoutProperties3.default)(_ref, ['style', 'docsLoaded', 'className', 'components', 'children']);
   return _react2.default.createElement(
     'div',
     {
@@ -42,11 +43,15 @@ var Griddle = function Griddle(_ref) {
         width: '100%'
       }, style), className: className
     },
-    _react2.default.createElement(_griddleReact2.default, (0, _extends3.default)({
-      components: (0, _extends3.default)({}, tableComponents, components)
-    }, props, {
-      plugins: [_griddleReact.plugins.LocalPlugin]
-    }))
+    _react2.default.createElement(
+      _griddleReact2.default,
+      (0, _extends3.default)({
+        components: (0, _extends3.default)({}, tableComponents, components)
+      }, props, {
+        plugins: [_griddleReact.plugins.LocalPlugin]
+      }),
+      children
+    )
   );
 };
 

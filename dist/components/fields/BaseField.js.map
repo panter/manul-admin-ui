@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/fields/BaseField.js"],"names":["BaseField"],"mappings":";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;IAEqBA,S;;;;;;;;;;;kBAAAA,S","file":"BaseField.js","sourcesContent":["import UniformsBaseField from 'uniforms-bootstrap4/BaseField';\n\nexport default class BaseField extends UniformsBaseField {\n\n}\n"]}
