@@ -1,10 +1,14 @@
-import AdminLayout from './containers/admin_layout';
-import AdminPreview from './containers/document_preview';
-import AdminList from './containers/list';
-import AdminCreate from './containers/create';
-import AdminEdit from './containers/edit';
-import AdminHome from './containers/admin_home';
-import UsersEdit from './containers/users_edit';
+import Layout from './containers/admin_layout';
+import Preview from './containers/document_preview';
+import List from './containers/list';
+import Create from './containers/create';
+import Edit from './containers/edit';
+import Home from './containers/admin_home';
+
+const addDeprectatedProps = components => ({
+  ...components,
+
+});
 
 /**
  * Returns a set of default components which can be used in a
@@ -13,17 +17,14 @@ import UsersEdit from './containers/users_edit';
  * @export
  * @returns
  */
-export default function getDefaultComponents(overwrites) {
-  return Object.assign({}, {
-    mainLayout: undefined,
-    layout: AdminLayout,
-    list: AdminList,
-    create: AdminCreate,
-    preview: AdminPreview,
-    index: AdminHome,
-    edit: {
-      users: UsersEdit,
-      default: AdminEdit,
-    },
-  }, overwrites);
+export default function getDefaultComponents(overwrites = {}) {
+  return {
+    MainLayout: undefined,
+    create: Create,
+    edit: Edit,
+    list: List,
+    preview: Preview,
+    layout: Layout,
+    ...overwrites,
+  };
 }

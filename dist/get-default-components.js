@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = require('babel-runtime/core-js/object/assign');
+var _extends2 = require('babel-runtime/helpers/extends');
 
-var _assign2 = _interopRequireDefault(_assign);
+var _extends3 = _interopRequireDefault(_extends2);
 
 exports.default = getDefaultComponents;
 
@@ -34,11 +34,11 @@ var _admin_home = require('./containers/admin_home');
 
 var _admin_home2 = _interopRequireDefault(_admin_home);
 
-var _users_edit = require('./containers/users_edit');
-
-var _users_edit2 = _interopRequireDefault(_users_edit);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var addDeprectatedProps = function addDeprectatedProps(components) {
+  return (0, _extends3.default)({}, components);
+};
 
 /**
  * Returns a set of default components which can be used in a
@@ -47,18 +47,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @export
  * @returns
  */
-function getDefaultComponents(overwrites) {
-  return (0, _assign2.default)({}, {
-    mainLayout: undefined,
-    layout: _admin_layout2.default,
-    list: _list2.default,
+function getDefaultComponents() {
+  var overwrites = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  return (0, _extends3.default)({
+    MainLayout: undefined,
     create: _create2.default,
+    edit: _edit2.default,
+    list: _list2.default,
     preview: _document_preview2.default,
-    index: _admin_home2.default,
-    edit: {
-      users: _users_edit2.default,
-      default: _edit2.default
-    }
+    layout: _admin_layout2.default
   }, overwrites);
 }
 //# sourceMappingURL=get-default-components.js.map

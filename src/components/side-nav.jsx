@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import DbIcon from 'react-icons/lib/fa/database';
+import fromContext from '../hocs/component_from_context_or';
 import {
   Nav,
   NavItem,
@@ -22,10 +23,10 @@ const SideNavComp = ({ navItems, className }) => (
   </Nav>
 );
 
-const SideNav = styled(SideNavComp)`
+const SideNav = styled(SideNavComp) `
   background-color: #222d32;
   min-height: 100%;
   height: 100%;
 `;
 
-export default SideNav;
+export default fromContext('layout.SideNav', SideNav);

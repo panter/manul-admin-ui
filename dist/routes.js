@@ -10,6 +10,14 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactMounter = require('react-mounter');
 
+var _admin_layout = require('./containers/admin_layout');
+
+var _admin_layout2 = _interopRequireDefault(_admin_layout);
+
+var _admin_home = require('./containers/admin_home');
+
+var _admin_home2 = _interopRequireDefault(_admin_home);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -18,20 +26,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 exports.default = function (injectDeps, _ref) {
   var adminContext = _ref.adminContext;
-  var adminRoutes = adminContext.adminRoutes,
-      components = adminContext.components;
+  var adminRoutes = adminContext.adminRoutes;
 
-  if (typeof components.index !== 'undefined') {
-    adminRoutes.route('/', {
-      name: 'admin.index',
-      action: function action() {
-        (0, _reactMounter.mount)(injectDeps(components.layout), {
-          content: function content() {
-            return _react2.default.createElement(components.index, null);
-          }
-        });
-      }
-    });
-  }
+  adminRoutes.route('/', {
+    name: 'admin.index',
+    action: function action() {
+      (0, _reactMounter.mount)(injectDeps(_admin_layout2.default), {
+        content: function content() {
+          return _react2.default.createElement(_admin_home2.default, null);
+        }
+      });
+    }
+  });
 };
 //# sourceMappingURL=routes.js.map

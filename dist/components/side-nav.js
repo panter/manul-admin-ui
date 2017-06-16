@@ -22,6 +22,10 @@ var _database = require('react-icons/lib/fa/database');
 
 var _database2 = _interopRequireDefault(_database);
 
+var _component_from_context_or = require('../hocs/component_from_context_or');
+
+var _component_from_context_or2 = _interopRequireDefault(_component_from_context_or);
+
 var _reactstrap = require('reactstrap');
 
 var _nav_link = require('../containers/nav_link');
@@ -61,5 +65,5 @@ var SideNavComp = function SideNavComp(_ref) {
 
 var SideNav = (0, _styledComponents2.default)(SideNavComp)(_templateObject);
 
-exports.default = SideNav;
+exports.default = (0, _component_from_context_or2.default)('layout.SideNav', SideNav);
 //# sourceMappingURL=side-nav.js.map

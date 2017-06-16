@@ -58,7 +58,9 @@ var _TextField2 = _interopRequireDefault(_TextField);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Component overwrites
-var componentOverwrites = exports.componentOverwrites = new _map2.default([[Object, _NestField2.default], [Array, _ListField2.default], [String, _TextField2.default]]);
+var componentOverwrites = exports.componentOverwrites = new _map2.default([[Object, (0, _fieldColumn2.default)(_NestField2.default)], [Array, (0, _fieldColumn2.default)(_ListField2.default)], [String, (0, _fieldColumn2.default)(_TextField2.default)]]);
+
+var ColumnedBaseAutoField = (0, _fieldColumn2.default)(_AutoField2.default);
 
 var AutoField = function (_BaseAutoField) {
   (0, _inherits3.default)(AutoField, _BaseAutoField);
@@ -73,17 +75,7 @@ var AutoField = function (_BaseAutoField) {
     value: function render() {
       // this.getFieldProps also returns props from context, such as uniforms props:
       var props = this.getFieldProps(undefined, { ensureValue: false });
-      var action = this.context.uniforms.action;
-      var isDisabled = props.field.uniforms && props.field.uniforms.disabled;
-      if (action === 'create' && isDisabled) return null;
-      var component = props.component;
-      var componentOverwrite = componentOverwrites.get(props.fieldType);
-      if (!component && componentOverwrite) {
-        component = (0, _fieldColumn2.default)(componentOverwrite);
-      }
-      if (!component) {
-        component = (0, _fieldColumn2.default)(_AutoField2.default);
-      }
+      var component = props.component || componentOverwrites.get(props.fieldType) || ColumnedBaseAutoField;
       return (0, _react.createElement)(component, (0, _extends3.default)({}, props));
     }
   }]);

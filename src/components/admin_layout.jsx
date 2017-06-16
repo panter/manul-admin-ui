@@ -3,16 +3,10 @@ import React from 'react';
 import {
   Row,
   Col,
-  Nav,
-  NavItem,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Collapse,
   Container,
 } from 'reactstrap';
 import styled from 'styled-components';
-import NavLink from '../containers/nav_link';
+import Navbar from './navbar';
 import SideNav from '../components/side-nav';
 
 const getNavLinks = adminConfig =>
@@ -37,24 +31,14 @@ const NoPaddingCol = styled(Col) `
 `;
 const ContentCol = styled(Col) `
   padding: 15px 30px 0 15px;
-  background-color: #fff;
+  background-color: #fff;Fexport
 `;
 
-const layoutContent = (adminConfig, content, components) => () => (
+const layoutContent = (adminConfig, content) => () => (
   <LayoutContainer>
     <Row>
       <Col>
-        <Navbar color="faded" light toggleable>
-          <NavbarToggler right />
-          <NavbarBrand href="/">Manul Admin UI</NavbarBrand>
-          <Collapse isOpen navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/account/">Account</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
+        <Navbar />
       </Col>
     </Row>
     <FullHeightRow>
@@ -72,9 +56,8 @@ const AdminLayout = ({
   content,
   MainLayout,
   adminConfig,
-  components,
 }) => {
-  const adminLayout = layoutContent(adminConfig, content, components);
+  const adminLayout = layoutContent(adminConfig, content);
   return (
     MainLayout ?
       <MainLayout content={adminLayout} /> :

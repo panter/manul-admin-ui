@@ -7,10 +7,12 @@ import TextField from './TextField';
 
 // Component overwrites
 export const componentOverwrites = new Map([
-  [Object, NestField],
-  [Array, ListField],
-  [String, TextField],
+  [Object, fieldColumn(NestField)],
+  [Array, fieldColumn(ListField)],
+  [String, fieldColumn(TextField)],
 ]);
+
+const ColumnedBaseAutoField = fieldColumn(BaseAutoField);
 
 export default class AutoField extends BaseAutoField {
   static displayName = 'AutoField';
@@ -18,17 +20,10 @@ export default class AutoField extends BaseAutoField {
   render() {
     // this.getFieldProps also returns props from context, such as uniforms props:
     const props = this.getFieldProps(undefined, { ensureValue: false });
-    const action = this.context.uniforms.action;
-    const isDisabled = props.field.uniforms && props.field.uniforms.disabled;
-    if (action === 'create' && isDisabled) return null;
-    let component = props.component;
-    const componentOverwrite = componentOverwrites.get(props.fieldType);
-    if (!component && componentOverwrite) {
-      component = fieldColumn(componentOverwrite);
-    }
-    if (!component) {
-      component = fieldColumn(BaseAutoField);
-    }
+    const component =
+      props.component ||
+      componentOverwrites.get(props.fieldType) ||
+      ColumnedBaseAutoField;
     return createElement(component, { ...props });
   }
 }

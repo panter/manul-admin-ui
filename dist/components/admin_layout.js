@@ -15,7 +15,7 @@ var _keys2 = _interopRequireDefault(_keys);
 var _templateObject = (0, _taggedTemplateLiteral3.default)(['\n  margin: 0 !important;\n  padding: 0 !important;\n  width: 100% !important;\n  min-height: 100%;\n  height: 100%;\n'], ['\n  margin: 0 !important;\n  padding: 0 !important;\n  width: 100% !important;\n  min-height: 100%;\n  height: 100%;\n']),
     _templateObject2 = (0, _taggedTemplateLiteral3.default)(['\n  min-height: 100%;\n  align-items: stretch;\n'], ['\n  min-height: 100%;\n  align-items: stretch;\n']),
     _templateObject3 = (0, _taggedTemplateLiteral3.default)(['\n  padding-right: 0 !important;\n'], ['\n  padding-right: 0 !important;\n']),
-    _templateObject4 = (0, _taggedTemplateLiteral3.default)(['\n  padding: 15px 30px 0 15px;\n  background-color: #fff;\n'], ['\n  padding: 15px 30px 0 15px;\n  background-color: #fff;\n']);
+    _templateObject4 = (0, _taggedTemplateLiteral3.default)(['\n  padding: 15px 30px 0 15px;\n  background-color: #fff;Fexport\n'], ['\n  padding: 15px 30px 0 15px;\n  background-color: #fff;Fexport\n']);
 
 var _propTypes = require('prop-types');
 
@@ -31,9 +31,9 @@ var _styledComponents = require('styled-components');
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _nav_link = require('../containers/nav_link');
+var _navbar = require('./navbar');
 
-var _nav_link2 = _interopRequireDefault(_nav_link);
+var _navbar2 = _interopRequireDefault(_navbar);
 
 var _sideNav = require('../components/side-nav');
 
@@ -55,7 +55,7 @@ var FullHeightRow = (0, _styledComponents2.default)(_reactstrap.Row)(_templateOb
 var NoPaddingCol = (0, _styledComponents2.default)(_reactstrap.Col)(_templateObject3);
 var ContentCol = (0, _styledComponents2.default)(_reactstrap.Col)(_templateObject4);
 
-var layoutContent = function layoutContent(adminConfig, content, components) {
+var layoutContent = function layoutContent(adminConfig, content) {
   return function () {
     return _react2.default.createElement(
       LayoutContainer,
@@ -66,33 +66,7 @@ var layoutContent = function layoutContent(adminConfig, content, components) {
         _react2.default.createElement(
           _reactstrap.Col,
           null,
-          _react2.default.createElement(
-            _reactstrap.Navbar,
-            { color: 'faded', light: true, toggleable: true },
-            _react2.default.createElement(_reactstrap.NavbarToggler, { right: true }),
-            _react2.default.createElement(
-              _reactstrap.NavbarBrand,
-              { href: '/' },
-              'Manul Admin UI'
-            ),
-            _react2.default.createElement(
-              _reactstrap.Collapse,
-              { isOpen: true, navbar: true },
-              _react2.default.createElement(
-                _reactstrap.Nav,
-                { className: 'ml-auto', navbar: true },
-                _react2.default.createElement(
-                  _reactstrap.NavItem,
-                  null,
-                  _react2.default.createElement(
-                    _nav_link2.default,
-                    { href: '/account/' },
-                    'Account'
-                  )
-                )
-              )
-            )
-          )
+          _react2.default.createElement(_navbar2.default, null)
         )
       ),
       _react2.default.createElement(
@@ -116,10 +90,9 @@ var layoutContent = function layoutContent(adminConfig, content, components) {
 var AdminLayout = function AdminLayout(_ref) {
   var content = _ref.content,
       MainLayout = _ref.MainLayout,
-      adminConfig = _ref.adminConfig,
-      components = _ref.components;
+      adminConfig = _ref.adminConfig;
 
-  var adminLayout = layoutContent(adminConfig, content, components);
+  var adminLayout = layoutContent(adminConfig, content);
   return MainLayout ? _react2.default.createElement(MainLayout, { content: adminLayout }) : _react2.default.createElement(
     'div',
     null,

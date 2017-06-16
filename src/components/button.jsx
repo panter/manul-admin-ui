@@ -1,42 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
+import { Button } from 'reactstrap';
+import fromContext from '../hocs/component_from_context_or';
 
-
-const C = ({ href, className, style, children, label, onClick, type, testId }) => {
-  const Tag = href ? 'a' : 'button';
-  return (
-    <Tag
-      className={className}
-      style={style}
-      href={href}
-      onClick={onClick}
-      type={type}
-      data-testId={testId}
-    >
-      {children || label}
-    </Tag>
-  );
-};
-
-const Button = styled(C)`
-  padding: 10px;
-  margin: 10px;
-  border-radius: 4px;
-  background-color: white;
-  border-style: solid;
-  border-width: 2px;
-  border-color: black;
-  font-size: 18px;
-  text-align: center;
-  text-decoration: none;
-`;
-
-Button.propTypes = {
-};
-
-Button.defaultProps = {
-};
-
-Button.displayName = 'Button';
-
-export default Button;
+export default fromContext('Button', Button);

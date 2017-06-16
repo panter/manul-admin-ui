@@ -117,7 +117,7 @@ var Quick = function Quick(parent) {
           );
         }
 
-        var AautoField = this.props.autoField || this.getAutoField();
+        var AutoFields = this.props.autoField || this.getAutoField();
         var ErrorsField = this.props.errorsField || this.getErrorsField();
         var SubmitField = this.props.submitField || this.getSubmitField();
 
@@ -128,7 +128,7 @@ var Quick = function Quick(parent) {
             _reactstrap.Row,
             null,
             this.getChildContextSchema().getSubfields().map(function (key) {
-              return _react2.default.createElement(AautoField, { key: key, name: key });
+              return _react2.default.createElement(AutoFields, { key: key, name: key });
             }),
             _react2.default.createElement(ErrorsField, null),
             _react2.default.createElement(SubmitField, null)

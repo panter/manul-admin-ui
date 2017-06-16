@@ -25,12 +25,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var NavLinkComp = function NavLinkComp(_ref) {
   var href = _ref.href,
       children = _ref.children,
-      className = _ref.className;
+      className = _ref.className,
+      onClick = _ref.onClick;
   return _react2.default.createElement(
     _reactstrap.NavLink,
     {
       href: href,
-      className: className
+      className: className,
+      onClick: onClick
     },
     children
   );

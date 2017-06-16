@@ -11,6 +11,10 @@ var _admin_home = require('../components/admin_home');
 
 var _admin_home2 = _interopRequireDefault(_admin_home);
 
+var _component_from_context_or = require('../hocs/component_from_context_or');
+
+var _component_from_context_or2 = _interopRequireDefault(_component_from_context_or);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var depsMapper = exports.depsMapper = function depsMapper(_context) {
@@ -22,5 +26,5 @@ var depsMapper = exports.depsMapper = function depsMapper(_context) {
   };
 };
 
-exports.default = (0, _mantraCore.composeAll)((0, _mantraCore.useDeps)(depsMapper))(_admin_home2.default);
+exports.default = (0, _component_from_context_or2.default)('home', (0, _mantraCore.composeAll)((0, _mantraCore.useDeps)(depsMapper))(_admin_home2.default));
 //# sourceMappingURL=admin_home.js.map

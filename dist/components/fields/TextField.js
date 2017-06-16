@@ -38,7 +38,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var StyledTextArea = _styledComponents2.default.textarea(_templateObject);
 
-var TextArea = function TextArea(_ref) {
+var TextArea = (0, _connectField2.default)(function (_ref) {
   var disabled = _ref.disabled,
       id = _ref.id,
       inputRef = _ref.inputRef,
@@ -71,10 +71,10 @@ var TextArea = function TextArea(_ref) {
       value: value
     })
   );
-};
+});
 
 var Text = function Text(props) {
-  var Component = !props.rowCount ? _TextField2.default : (0, _connectField2.default)(TextArea);
+  var Component = !props.rowCount ? _TextField2.default : TextArea;
 
   return _react2.default.createElement(Component, props);
 };

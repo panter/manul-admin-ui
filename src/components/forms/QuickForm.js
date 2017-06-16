@@ -39,7 +39,7 @@ const Quick = parent => class extends QuickForm.Quick(parent) {
       );
     }
 
-    const AautoField = this.props.autoField || this.getAutoField();
+    const AutoFields = this.props.autoField || this.getAutoField();
     const ErrorsField = this.props.errorsField || this.getErrorsField();
     const SubmitField = this.props.submitField || this.getSubmitField();
 
@@ -47,7 +47,7 @@ const Quick = parent => class extends QuickForm.Quick(parent) {
       <form {...nativeFormProps}>
         <Row>
           {this.getChildContextSchema().getSubfields().map(key =>
-            <AautoField key={key} name={key} />,
+            <AutoFields key={key} name={key} />,
           )}
 
           <ErrorsField />

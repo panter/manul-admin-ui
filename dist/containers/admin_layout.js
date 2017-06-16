@@ -5,7 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.depsMapper = exports.mainLayoutMapper = exports.composer = undefined;
 
+var _get2 = require('lodash/fp/get');
+
+var _get3 = _interopRequireDefault(_get2);
+
 var _mantraCore = require('mantra-core');
+
+var _component_from_context_or = require('../hocs/component_from_context_or');
+
+var _component_from_context_or2 = _interopRequireDefault(_component_from_context_or);
 
 var _admin_layout = require('../components/admin_layout');
 
@@ -33,7 +41,7 @@ var composer = exports.composer = function composer(_ref, onData) {
  * @param {} context
  */
 var mainLayoutMapper = exports.mainLayoutMapper = function mainLayoutMapper(context) {
-  return !!context && !!context.adminContext && !!context.adminContext.components && context.adminContext.components.mainLayout;
+  return (0, _get3.default)('adminContext.components.MainLayout'.split('.'), context);
 };
 
 /**
@@ -55,5 +63,5 @@ var depsMapper = exports.depsMapper = function depsMapper(_context) {
   };
 };
 
-exports.default = (0, _mantraCore.composeAll)((0, _mantraCore.composeWithTracker)(composer), (0, _restrict_to_roles2.default)('admin', NotAllowedWrapper), (0, _mantraCore.useDeps)(depsMapper))(_admin_layout2.default);
+exports.default = (0, _component_from_context_or2.default)('Layout', (0, _mantraCore.composeAll)((0, _mantraCore.composeWithTracker)(composer), (0, _restrict_to_roles2.default)('admin', NotAllowedWrapper), (0, _mantraCore.useDeps)(depsMapper))(_admin_layout2.default));
 //# sourceMappingURL=admin_layout.js.map

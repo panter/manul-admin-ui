@@ -8,7 +8,7 @@ const StyledTextArea = styled.textarea`
   width: 100%;
 `;
 
-const TextArea = ({
+const TextArea = connectField(({
   disabled,
   id,
   inputRef,
@@ -36,14 +36,14 @@ const TextArea = ({
         ref={inputRef}
         rows={rowCount}
         value={value}
-       />
+      />
     </div>
-  );
+  ));
 
 const Text = (props) => {
   const Component = !props.rowCount ?
     BaseTextField :
-    connectField(TextArea);
+    TextArea;
 
   return (<Component {...props} />);
 };

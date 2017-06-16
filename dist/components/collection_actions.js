@@ -21,6 +21,8 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 var _manulI18n = require('@panter/manul-i18n');
 
+var _manulI18n2 = _interopRequireDefault(_manulI18n);
+
 var _link_button = require('../containers/link_button');
 
 var _link_button2 = _interopRequireDefault(_link_button);
@@ -49,18 +51,15 @@ var CollectionActions = function CollectionActions(_ref) {
       'div',
       null,
       _react2.default.createElement(
-        ActionButton,
-        { routeName: 'admin.' + collectionName + '.create', color: 'primary' },
-        _react2.default.createElement(
-          _manulI18n.T,
-          null,
-          'admin.' + collectionName + '.create'
-        )
-      ),
-      _react2.default.createElement(
-        ActionButton,
-        { routeName: 'admin.' + collectionName + '.create' },
-        'export users'
+        _manulI18n.T,
+        { _id: ['admin.' + collectionName + '.create', 'admin.create'] },
+        function (text) {
+          return _react2.default.createElement(
+            ActionButton,
+            { routeName: 'admin.' + collectionName + '.create', color: 'primary' },
+            text
+          );
+        }
       )
     )
   );

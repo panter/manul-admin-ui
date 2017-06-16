@@ -1,5 +1,6 @@
 import { useDeps, composeAll, composeWithTracker } from 'mantra-core';
-import _ from 'lodash/fp';
+import { get } from 'lodash/fp';
+import fromContext from '../hocs/component_from_context_or';
 import AdminLayout from '../components/admin_layout';
 import restrictToRoles from '../hocs/restrict_to_roles';
 import NotAllowed from '../components/not_allowed';
@@ -14,10 +15,7 @@ export const composer = ({ context }, onData) => {
  * @param {} context
  */
 export const mainLayoutMapper = context =>
-  !!context &&
-  !!context.adminContext &&
-  !!context.adminContext.components &&
-  context.adminContext.components.mainLayout;
+  get('adminContext.components.MainLayout'.split('.'), context);
 
 /**
  * NotAllowed wrapper providing a main layout reference.
@@ -32,8 +30,8 @@ export const depsMapper = context => ({
   adminConfig: context.adminContext.config,
 });
 
-export default composeAll(
+export default fromContext('Layout', composeAll(
   composeWithTracker(composer),
   restrictToRoles('admin', NotAllowedWrapper),
   useDeps(depsMapper),
-)(AdminLayout);
+)(AdminLayout));
